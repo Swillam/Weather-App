@@ -21,4 +21,5 @@ export class AppComponent implements OnInit {
       }
     });
   }
+  title = 'Weather-App';
 }
