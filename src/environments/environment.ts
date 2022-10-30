@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  weatherApiUrl: 'https://community-open-weather-map.p.rapidapi.com/weather',
+  weatherApiUrl: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
   XRapidAPIHostHeader: 'X-RapidAPI-Host',
-  XRapidAPIHostHeaderValue: 'community-open-weather-map.p.rapidapi.com',
+  XRapidAPIHostHeaderValue: 'weatherapi-com.p.rapidapi.com',
   XRapidAPIKeyHeader: 'X-RapidAPI-Key',
   XRapidAPIKeyHeaderValue: '38091f2543msh66baf163ab7e3a2p1b7b83jsn7b202ec9ca35',
 };
