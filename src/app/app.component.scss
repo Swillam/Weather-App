@@ -1,6 +1,5 @@
 @import "src/styles.scss";
 
-
 .upper {
   position: relative;
   overflow: hidden;
@@ -62,6 +61,11 @@
   text-align: center;
   font-weight: 900;
 }
+
+.weather-type{
+  color: $white;
+}
+
 .more-info-label{
   color: $white;
 }
@@ -107,23 +111,39 @@
 }
 
 .search-location{
-  position: relative;
+  position: absolute;
+  left : 19%;
+  margin-top: 15px;
   text-align: center;
-  z-index: 1;
+  z-index: 100;
+
+  mat-icon{
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 10px;
+    color: $white !important;
+    z-index: 100;
+    //padding-right: 10px;
+  }
 
   input{
     background-color: $shadow-light;
     outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid $white;
-    padding: 1em;
+    border: none;
+    border-radius: 20px;
+    padding: 0.8em 0.8em 0.8em 2.5em;
+    width : 260px;
+    height: 35px;
     color: $white;
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-align: center;
-  }&::-webkit-input-placeholder{
+  }
+  input::placeholder{
      color: $white;
-   }
+    text-align: center;
+  }
+  input:focus::placeholder {
+    color: transparent;
+  }
 
 }
