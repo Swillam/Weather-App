@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Weather-App';
+
+  dateTime(){
+    return new Date().getHours()
+  }
 }
