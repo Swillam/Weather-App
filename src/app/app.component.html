@@ -1,6 +1,6 @@
 <div class="container" [ngStyle]="{'background-color': (dateTime() > 19 || dateTime() <= 4) ? '#23394A' : '#4c8bad' }">
   <div class="upper">
-    <img src="../assets/day.jpg" *ngIf="(dateTime() > 4 || dateTime() <=19)">
+    <img src="../assets/jour.jpg" *ngIf="(dateTime() > 4 || dateTime() <=19)">
     <img src="../assets/night.jpg" *ngIf="(dateTime() > 19 || dateTime() <= 4) ">
 
     <!--Search locaton bar-->
@@ -14,6 +14,31 @@
       <div class="location">Paris</div>
       <div class="temperature">{{14.40 | number: '1.0-0'}}°C</div> <!--retourne le temperature au format entier -->
       <div class="weather-condition"><img src="../assets/clouds.png"> Nuageux</div> <!--remplacer l'image par l'icon du temps actuel-->
+    </div>
+
+    <div class="weather-hours" id="wh">
+      <div class="byHours">
+        <div class="hour">16:00</div>
+        <div class="icon-w"><img src="../assets/precipitation.png"></div>
+<!--        <img src="../assets/precipitation.png">-->
+        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
+      </div>
+<!--      <div class="byHours">-->
+<!--        <div class="hour">17:00</div>-->
+<!--        <div class="icon-weather"><img src="../assets/clouds.png"></div>-->
+<!--        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>-->
+<!--      </div>-->
+
+<!--      <div class="byHours">-->
+<!--        <div class="hour">18:00</div>-->
+<!--        <div class="icon-weather"><img src="../assets/clouds.png"></div>-->
+<!--        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>-->
+<!--      </div>-->
+<!--      <div class="byHours">-->
+<!--        <div class="hour">19:00</div>-->
+<!--        <div class="icon-weather"><img src="../assets/clouds.png"></div>-->
+<!--        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>-->
+<!--      </div>-->
     </div>
   </div>
 
