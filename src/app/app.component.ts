@@ -22,4 +22,8 @@ export class AppComponent implements OnInit {
     });
   }
   title = 'Weather-App';
+
+  dateTime(){
+    return new Date().getHours()
+  }
 }
