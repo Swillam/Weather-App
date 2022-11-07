@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
+    this.cityName = '';
   }
   title = 'Weather-App';
 
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
     this.weatherService.getWeatherData("Paris")
     .subscribe({
       next: (weather) => {
+        this.weatherData = weather
         console.log(weather);
       }
     });
