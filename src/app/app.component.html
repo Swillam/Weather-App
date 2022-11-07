@@ -1,21 +1,21 @@
 <!--la couleur du container change selon le jour ou la nuit-->
-<div class="container" [ngStyle]="{'background-color': (dateTime() > 19 || dateTime() <= 4) ? '#23394A' : '#4c8bad' }">
+<div class="container" *ngIf="weatherData" [ngStyle]="{'background-color': (dateTime() > 19 || dateTime() <= 4) ? '#23394A' : '#4c8bad' }">
   <!--le background change selon le jour ou la nuit-->
   <div class="upper">
-    <img src="../assets/jour.jpg" *ngIf="(dateTime() > 4 || dateTime() <=19)">
-    <img src="../assets/night.jpg" *ngIf="(dateTime() > 19 || dateTime() <= 4) ">
+    <img src="../assets/jour.jpg" *ngIf="weatherData.current.temp_c > 15">
+    <img src="../assets/night.jpg" *ngIf="weatherData.current.temp_c <= 15">
 
     <!--Search locaton bar-->
     <div class="search-location">
-      <form>
-        <mat-icon>search</mat-icon><input type="text" name="search" placeholder="Entrer le nom de la ville">
+      <form #form="ngForm" (submit)="onSubmit">
+        <mat-icon>search</mat-icon><input type="text" name="city" [(ngModel)]="cityName" placeholder="Entrer le nom de la ville">
       </form>
     </div>
 
     <!--data météo de la ville-->
     <div class="weather-data">
-      <div class="location">Paris</div>
-      <div class="temperature">{{14.40 | number: '1.0-0'}}°C</div> <!--retourne le temperature au format entier -->
+      <div class="location">{{ weatherData.location.name }}</div>
+      <div class="temperature">{{ weatherData.current.temp_c | number: '1.0-0'}}°C</div> <!--retourne le temperature au format entier -->
       <div class="weather-condition"><img src="../assets/clouds.png"> Nuageux</div> <!--remplacer l'image par l'icon du temps actuel-->
     </div>
 
@@ -92,7 +92,7 @@
           <img src="../assets/min.png">
           <span>Min</span>
         </div>
-        <div class="info-block-value">10°C</div>
+        <div class="info-block-value">{{ weatherData.forecast.forecastday[0].day.mintemp_c }}°C</div>
       </div>
       <!--Temperature max--->
       <div class="info-block">
@@ -100,7 +100,7 @@
           <img src="../assets/max.png">
           <span>Max</span>
         </div>
-        <div class="info-block-value">30°C</div>
+        <div class="info-block-value">{{ weatherData.forecast.forecastday[0].day.maxtemp_c }}°C</div>
       </div>
       <!--Humidity-->
       <div class="info-block">
@@ -108,7 +108,7 @@
           <img src="../assets/precipitation.png">
           <span>Humidité</span>
         </div>
-        <div class="info-block-value">77%</div>
+        <div class="info-block-value">{{ weatherData.current.humidity }}%</div>
       </div>
       <!--Wind-->
       <div class="info-block">
@@ -116,7 +116,7 @@
           <img src="../assets/windy.png">
           <span>Vent</span>
         </div>
-        <div class="info-block-value">5 km/h</div>
+        <div class="info-block-value">{{ weatherData.current.wind_kph }} km/h</div>
       </div>
       <!--UV-->
       <div class="info-block">
@@ -124,7 +124,7 @@
           <img src="../assets/rays.png">
           <span>UV</span>
         </div>
-        <div class="info-block-value">5</div>
+        <div class="info-block-value">{{ weatherData.current.uv }}</div>
       </div>
       <!--Air pressure-->
       <div class="info-block">
@@ -132,7 +132,7 @@
           <img src="../assets/gauge.png">
           <span>Pression de l'air</span>
         </div>
-        <div class="info-block-value">1020 hPa</div>
+        <div class="info-block-value">{{ weatherData.current.pressure_mb }} hPa</div>
       </div>
     </div>
   </div>
