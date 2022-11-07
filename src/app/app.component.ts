@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
   }
   title = 'Weather-App';
 
+  dateTime(){
+    return new Date().getHours()
+  }
+
   onSubmit() {
     this.getWeatherData(this.cityName);
     this.cityName = '';
