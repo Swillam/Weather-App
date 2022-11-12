@@ -23,60 +23,48 @@
     <div class="weather-hours" id="wh">
       <!--TODO : a remplacer par une boucle-->
       <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
+        <div class="hour">Now</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/119.png"></div>
+        <div class="temp">{{weatherData.current.temp_c | number: '1.0-0'}}°C</div>
+      </div>
+      <div class="byHours">
+        <div class="hour">12:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/176.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[12].temp_c}}°C</div>
+      </div>
+      <div class="byHours">
+        <div class="hour">13:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/353.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[13].temp_c| number: '1.0-0'}}°C</div>
+      </div>
+      <div class="byHours">
+        <div class="hour">14:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/116.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[14].temp_c | number: '1.0-0'}}°C</div>
+      </div>
+      <div class="byHours">
+        <div class="hour">15:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/119.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[15].temp_c | number: '1.0-0'}}°C</div>
       </div>
       <div class="byHours">
         <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/122.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[16].temp_c | number: '1.0-0'}}°C</div>
       </div>
       <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
+        <div class="hour">17:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/day/122.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[17].temp_c | number: '1.0-0'}}°C</div>
       </div>
       <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
+        <div class="hour">18:00</div>
+        <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/night/266.png"></div>
+        <div class="temp">{{weatherData.forecast.forecastday[0].hour[18].temp_c | number: '1.0-0'}}°C</div>
       </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
-      <div class="byHours">
-        <div class="hour">16:00</div>
-        <div class="icon-w"><img src="../assets/precipitation.png"></div>
-        <div class="temp">{{20.30 | number: '1.0-0'}}°C</div>
-      </div>
+     
+     
+      
     </div>
   </div>
 
