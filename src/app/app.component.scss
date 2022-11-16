@@ -47,16 +47,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: $white;
+
 }
 
 .location{
-  color: $white;
   text-align: center;
   font-size: 1.2em;
 }
 
+.time {
+  opacity: 0.5;
+}
 .temperature{
-  color: $white;
   font-size: 4em;
   text-align: center;
   font-weight: 900;

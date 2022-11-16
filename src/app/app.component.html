@@ -1,22 +1,27 @@
 <!--la couleur du container change selon le jour ou la nuit-->
-<div class="container" *ngIf="weatherData" [ngStyle]="{'background-color': (dateTime() > 19 || dateTime() <= 4) ? '#23394A' : '#4c8bad' }">
+<div class="container" *ngIf="weatherData"
+  [ngStyle]="{'background-color': isDay ? '#4c8bad' : '#23394A'}">
   <!--le background change selon le jour ou la nuit-->
   <div class="upper">
-    <img src="../assets/jour.jpg" *ngIf="weatherData.current.temp_c > 15">
-    <img src="../assets/night.jpg" *ngIf="weatherData.current.temp_c <= 15">
+    <img src="../assets/jour.jpg" *ngIf="isDay">
+    <img src="../assets/night.jpg" *ngIf="!isDay">
 
     <!--Search locaton bar-->
     <div class="search-location">
-      <form #form="ngForm" (submit)="onSubmit">
-        <mat-icon>search</mat-icon><input type="text" name="city" [(ngModel)]="cityName" placeholder="Entrer le nom de la ville">
+      <form #form="ngForm" (submit)="onSubmit()">
+        <mat-icon>search</mat-icon>
+          <input type="text" name="city" [(ngModel)]="cityName" placeholder="Entrer le nom de la ville">
       </form>
     </div>
 
     <!--data météo de la ville-->
     <div class="weather-data">
       <div class="location">{{ weatherData.location.name }}</div>
-      <div class="temperature">{{ weatherData.current.temp_c | number: '1.0-0'}}°C</div> <!--retourne le temperature au format entier -->
-      <div class="weather-condition"><img src="../assets/clouds.png"> Nuageux</div> <!--remplacer l'image par l'icon du temps actuel-->
+      <div class="time"> {{ localTime }} </div>
+      <div class="temperature">{{ weatherData.current.temp_c | number: '1.0-0'}}°C</div>
+      <!--retourne le temperature au format entier -->
+      <div class="weather-condition"><img src="../assets/clouds.png"> Nuageux</div>
+      <!--remplacer l'image par l'icon du temps actuel-->
     </div>
 
     <!--météo heure par heure-->
@@ -62,9 +67,6 @@
         <div class="icon-w"><img src="//cdn.weatherapi.com/weather/64x64/night/266.png"></div>
         <div class="temp">{{weatherData.forecast.forecastday[0].hour[18].temp_c | number: '1.0-0'}}°C</div>
       </div>
-     
-     
-      
     </div>
   </div>
 

@@ -1,27 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { WeatherData } from './models/weather.model';
 import { WeatherService } from './services/weather.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  constructor(private weatherService: WeatherService) { }
-
+  title = 'Weather-App';
   cityName: string = 'Paris';
   weatherData?: WeatherData;
-  
+  localHour = new Date().getHours();
+  localTime: string = '';
+  isDay : boolean = true
+
+  constructor(private weatherService: WeatherService) {}
+
+
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
     this.cityName = '';
   }
-  title = 'Weather-App';
 
-  dateTime(){
-    return new Date().getHours()
+
+  isDayInLocalCity() {
+    const cityTime = this.weatherData?.current.last_updated || '';
+    this.localHour =  new Date(cityTime).getHours();
+    this.localTime = new Date(cityTime).toLocaleString('fr-FR')
+    return this.localHour >= 6 && this.localHour < 20
+
   }
 
   onSubmit() {
@@ -30,12 +38,11 @@ export class AppComponent implements OnInit {
   }
 
   private getWeatherData(cityName: string) {
-    this.weatherService.getWeatherData("Paris")
-    .subscribe({
+    this.weatherService.getWeatherData(cityName).subscribe({
       next: (weather) => {
-        this.weatherData = weather
-        console.log(weather);
-      }
+        this.weatherData = weather;
+        this.isDay = this.isDayInLocalCity();
+      },
     });
   }
 }
