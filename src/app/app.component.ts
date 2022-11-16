@@ -13,23 +13,21 @@ export class AppComponent implements OnInit {
   weatherData?: WeatherData;
   localHour = new Date().getHours();
   localTime: string = '';
-  isDay : boolean = true
+  isDay: boolean = true;
+  weatherByHours: any[] = []
 
   constructor(private weatherService: WeatherService) {}
-
 
   ngOnInit(): void {
     this.getWeatherData(this.cityName);
     this.cityName = '';
   }
 
-
   isDayInLocalCity() {
     const cityTime = this.weatherData?.current.last_updated || '';
-    this.localHour =  new Date(cityTime).getHours();
-    this.localTime = new Date(cityTime).toLocaleString('fr-FR')
-    return this.localHour >= 6 && this.localHour < 20
-
+    this.localHour = new Date(cityTime).getHours();
+    this.localTime = new Date(cityTime).toLocaleString('fr-FR');
+    return this.localHour >= 6 && this.localHour < 20;
   }
 
   onSubmit() {
@@ -37,11 +35,22 @@ export class AppComponent implements OnInit {
     this.cityName = '';
   }
 
+  getWeatherByHours(data: any) {
+    this.weatherByHours = data.forecast.forecastday[0].hour
+      .splice(this.localHour + 1, 8)
+      .map((hourData: any) => {
+        return { temp: hourData.temp_c,  icon: hourData.condition.icon }
+      })
+  }
+
   private getWeatherData(cityName: string) {
     this.weatherService.getWeatherData(cityName).subscribe({
       next: (weather) => {
         this.weatherData = weather;
         this.isDay = this.isDayInLocalCity();
+        this.getWeatherByHours(weather);
+        console.log(this.weatherData);
+
       },
     });
   }
