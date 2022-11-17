@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   getWeatherByHours(data: any) {
     this.weatherByHours = data.forecast.forecastday[0].hour
-      .splice(this.localHour + 1, 8)
+      .splice(this.localHour + 1, 10)
       .map((hourData: any) => {
         return { temp: hourData.temp_c,  icon: hourData.condition.icon }
       })
@@ -49,8 +49,6 @@ export class AppComponent implements OnInit {
         this.weatherData = weather;
         this.isDay = this.isDayInLocalCity();
         this.getWeatherByHours(weather);
-        console.log(this.weatherData);
-
       },
     });
   }

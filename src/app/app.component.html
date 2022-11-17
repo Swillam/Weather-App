@@ -28,7 +28,7 @@
     <div class="weather-hours" id="wh">
       <!--TODO : a remplacer par une boucle-->
       <div class="byHours" *ngFor="let hourData of weatherByHours; let i = index ">
-        <div class="hour">{{ (localHour + i + 1) % 24}}</div>
+        <div class="hour">{{ (localHour + i + 1) % 24}}h</div>
         <div class="icon-w"><img src="{{ hourData.icon}}"></div>
         <div class="temp">{{ hourData.temp }}°C</div>
       </div>
